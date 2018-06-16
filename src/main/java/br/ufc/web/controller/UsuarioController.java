@@ -39,7 +39,7 @@ public class UsuarioController {
 	@GetMapping("/listar")
 	public ModelAndView listarusuario() {
 		List<Usuario> usuarios = usuarioService.allUsers();
-		ModelAndView mv = new ModelAndView("/listar");
+		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("todasAsusuarios", usuarios);
 		
