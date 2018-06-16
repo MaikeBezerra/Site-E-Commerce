@@ -1,0 +1,38 @@
+<html xmlns:th="http//thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="utf-8">
+	<title>Carrinho</title>
+</head>
+<body>
+	<div class="container">
+		<h4>Sua compra</h4>
+		
+		<table>
+			<thead>
+				<tr class="row">
+					<th>Nome</th>
+					<th>Preco<th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="produto : ${produtos}" class="row">
+					<td th:text="${produto.nome}"></td>
+					<td th:text="${produto.preco}"></td>
+					<td><a class="waves-effect waves-light btn-small"><i class="material-icons left">delete</i></a></td>
+				</tr>
+				
+			</tbody>
+		</table><br>
+		TOTAL :
+		<div class="total-preco row">
+			<input type="text" name="lname" class="input-field col s2" disabled>
+		</div>
+		<a class="waves-effect waves-light btn">Finalizar compra</a>
+	</div>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>	
+</body>
+</html>

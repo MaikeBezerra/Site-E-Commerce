@@ -1,0 +1,193 @@
+* {
+	font-family: Arial;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.topo {
+	height: 50px;
+	background-color: #353535;
+}
+
+.topointerior {
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+	color: #FFF;
+}
+
+.logo {
+	width: 50%;
+	float: left;
+	font-size: 24px;
+	line-height: 50px;
+}
+
+.menu {
+	float: right;
+}
+
+.menu ul,
+.menu li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menu li {
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	line-height: 50px;
+	font-size: 14px;
+}
+
+.menu li:hover {
+	background-color: #3480C1;
+}
+
+.menu a {
+	color: white;
+	text-decoration: none;
+}
+
+#cart {
+	margin-top: 20px;
+}
+.banner {
+	height: 300px;
+	background-color: #347aba;
+}
+
+.bannerinterior {
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.banneresquerda {
+	float: left;
+}
+
+.bannerdireita {
+	float: right;
+}
+
+.banneresquerda,
+.bannerdireita {
+	width: 50%;
+	height: 300px;
+}
+
+.banneresquerda img,
+.bannerdireita img{
+	height: 300px;
+}
+
+.bannerdireita img {
+	float: right;
+}
+
+.titulo {
+	height: 90px;
+	line-height: 90px;
+	font-size: 25px;
+	text-align: center;
+	color: green;
+}
+
+footer {
+	clear: left;
+	background-color: #347aba;
+}
+
+#rodape {
+	width: 100%;
+	max-width: 1000px;
+	margin-top: 10px;
+	margin: auto;
+}
+
+#rodape {
+	padding: 10px;
+	color: white;
+	font-size: 20px;
+}
+
+.menuMobile {
+	display: none;
+	width: 40px;
+	height: 40px;
+	background-color:#000;
+	margin-top: 5px;
+	margin-right: 20px;
+}
+
+.mm_line {
+	height: 3px;
+	background-color: #39aae1;
+}
+
+@media only screen and  (max-width: 950px)  {
+	.topointerior, .bannerinterior, #rodape {
+		width: 680px;
+	}
+
+}
+
+@media only screen and (max-width: 695px)  {
+	.topointerior, .bannerinterior, #rodape {
+		width: 380px;
+	}
+
+	.logo {
+		font-size: 17px;
+	}	
+
+	.banner {
+		height: 200px;
+	}
+
+	.banneresquerda,
+	.bannerdireita {
+		height: 200px;
+	}
+
+	.banneresquerda img,
+	.bannerdireita img{
+		width: 170px;
+		height: 200px;
+	}
+
+	.menu ul {
+		display: none;
+		position: absolute;
+		background-color: #353535;
+		z-index: 10;
+	}
+
+	.menu li {
+		font-size: 10px;
+		float: none;
+		color: #FFF;
+		left: 0;
+		width: 100%;
+	}
+
+	.logo {
+		padding-left: 20px;
+	}
+
+	.menuMobile{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+}

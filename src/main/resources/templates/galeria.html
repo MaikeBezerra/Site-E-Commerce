@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http//thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="/css/template-style.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	
+</head>
+<body>
+	<div class="topo">
+		<div class="topointerior">
+			<div class="logo">
+				Game Station
+			</div>
+			<div class="menu">
+				<img src="img/list.png" class="menuMobile" onclick="toggleMenu()">
+				<ul id="menu">
+					<li><a href="/index">HOME</a></li>
+					<li><a href="/sobre">SOBRE</a></li>
+					<li><a href="/galeria">GALERIA</a></li>
+					<li><a href="/formulario">FORMULÁRIO</a></li>
+					<li><a href="/formulario">Login</a></li>
+					<li id="cart"><a href="/formulario"><img src="img/cart.png"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="banner">
+		<div class="bannerinterior">
+			<div class="banneresquerda">
+				<img src="img/Sub-Zero (1).png">
+			</div>
+			<div class="bannerdireita">
+				<img src="img/scorpion.png">
+			</div>
+		</div>
+	</div>
+	<div class="conteudo">
+		<div class="conteudointerno">
+			<div class="titulo">
+				Lista de Produtos
+			</div>
+			
+			<ul style="list-style-type:none" class="produtos">
+  				<li class="info-produto" th:each="produto : ${produtos}">
+  					<img th:src="@{'img/produtos/'+ ${produto.nome} + '.jpg'}">
+					<h5 id="nome-produto"><span th:text="${produto.nome}"></span></h5>
+					<span th:text="${produto.preco}"></span><br>
+					<a id="btn-comprar" class="waves-effect waves-light btn-small">Comprar</a>
+  				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="maisProdutos" class="conteudo">
+		<div class="conteudointerno">
+			<div class="produtos">
+				<div class="info-produto">
+					<img src="img/produtos/Diablo.jpg">
+					<h3>Diablo</h3>
+				
+					R$ 90,00
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/GTA.jpg">
+					<h3>Grand theft auto V</h3>
+					
+					R$ 144,90	
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/Bloodborne.jpg">
+					<h3>Bloodborne</h3>
+					
+					R$ 58,50
+						
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/Dark-Soul.jpg">
+					<h3>Dark Souls III</h3>
+					
+					R$ 94,40	
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/MK.jpg">
+					<h3>Mortal Kombat X</h3>
+					
+					R$ 80,56
+						
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/Tekken.jpg">
+					<h3>Tekken 7</h3>
+					
+					R$ 90,89
+						
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/Nba.jpg">
+					<h3>NBA 2K18</h3>
+					
+					R$ 158,00
+						
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/guitar.jpg">
+					<h3>Guitar Hero</h3>
+					
+					R$ 200,00	
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/cars.jpg">
+					<h3>Project Cars 2</h3>
+					
+					R$ 94,91
+						
+				</div>
+				<div class="info-produto">
+					<img src="img/produtos/Fifa.jpg">
+					<h3>Fifa 2018</h3>
+					
+					R$ 99,00
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div class="botao">
+		<br><br> 	
+		<center>
+			<button id="button_maisProdutos" type="button">Ver mais produtos</button>
+		</center>
+	</div>
+
+	<footer>
+		<div id="rodape">
+			Contato: (11) 1111-1111<br>
+			data de criação: 06/05/2018<br>
+			produzido por: Maike Bezerra
+		</div>
+	</footer>	
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>

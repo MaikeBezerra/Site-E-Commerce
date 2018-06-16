@@ -1,0 +1,92 @@
+.conteudointerno {
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.info-produto {
+	margin: 5px;
+	margin-left: 40px;
+	float: left;
+	border-style: solid;
+	
+}
+
+.info-produto {
+	text-align: center;
+	color: blue;
+}
+
+.info-produto img {
+	border-bottom: solid;
+}
+
+#btn-comprar {
+	background-color: #1976d2;
+	padding-bottom: 5px;
+}
+
+#nome-produto {
+	color: red;
+	text-align: center;
+}
+
+.info-empresa {
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+	padding-top: 30px;
+}
+
+div .total-preco {
+	float: left;
+	background-color: red;
+}
+
+.info-empresa img {
+	float: right;
+	height: 100px;
+	padding-left: 10px;
+}
+
+.info-empresa p {
+	text-align: justify;
+}
+
+.botao {
+	clear: left;
+	width: 100%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+#button_maisProdutos {
+	background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 950px) {
+	.conteudointerno, .info-empresa {
+		width: 670px;
+	}
+
+}
+
+@media only screen and (max-width: 695px) {
+	.conteudointerno, .info-empresa {
+		width: 370px;
+	}
+
+	.info-empresa img {
+		height: 45px;
+	}
+
+}
+
+
+
