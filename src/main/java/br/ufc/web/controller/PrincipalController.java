@@ -17,8 +17,12 @@ public class PrincipalController {
 	ProdutoService service;
 	
 	@RequestMapping("/index")
-	public String paginaInicial() {
-		return "index";
+	public ModelAndView paginaInicial() {
+		List<Produto> produtos = service.retornarTodosOsProdutos();
+		ModelAndView mv = new ModelAndView("index");
+		
+		mv.addObject("produtos", produtos);
+		return mv;
 	}
 	
 	
@@ -44,10 +48,5 @@ public class PrincipalController {
 	@RequestMapping("/cadastro")
 	public String cadastroUser() {
 		return "cadastro";
-	}
-	
-	@RequestMapping("/carrinho")
-	public String cart() {
-		return "carrinho";
 	}
 }

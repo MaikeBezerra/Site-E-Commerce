@@ -1,7 +1,5 @@
 package br.ufc.web.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +18,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+
 	@RequestMapping("/formulario")
 	public ModelAndView formulariousuario() {
 		ModelAndView mv = new ModelAndView("cadastro");
@@ -31,14 +30,14 @@ public class UsuarioController {
 	public ModelAndView salvarusuario(Usuario usuario) {
 		usuarioService.adicionarUsuario(usuario);
 		
-		ModelAndView mv = new ModelAndView("redirect:/usuario/listar");
+		ModelAndView mv = new ModelAndView("redirect:/usuario/logar");
 		
 		return mv;
 	}
 	
 	@GetMapping("/listar")
 	public ModelAndView listarusuario() {
-		List<Usuario> usuarios = usuarioService.allUsers();
+		Iterable<Usuario> usuarios = usuarioService.allUsers();
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("todasAsusuarios", usuarios);
@@ -46,18 +45,18 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@RequestMapping("/atualizar/{cpf}")
-	public ModelAndView atualizarusuario(@PathVariable String cpf) {
-		Usuario usuario = usuarioService.buscaPorId(cpf);
+	@RequestMapping("/atualizar/{id}")
+	public ModelAndView atualizarusuario(@PathVariable Long id) {
+		Usuario usuario = usuarioService.buscaPorId(id);
 		ModelAndView mv = new ModelAndView("cadastro");
 		mv.addObject("usuario", usuario);
 		
 		return mv;
 	}
 	
-	@RequestMapping("/excluir/{cpf}")
-	public ModelAndView excluirUsuario(@PathVariable String cpf) {
-		usuarioService.removerUsuario(cpf);
+	@RequestMapping("/excluir/{id}")
+	public ModelAndView excluirUsuario(@PathVariable Long id) {
+		usuarioService.removerUsuario(id);
 		ModelAndView mv = new ModelAndView("redirect:/usuario/listar");
 		return mv;
 	}
@@ -68,4 +67,5 @@ public class UsuarioController {
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
+	
 }

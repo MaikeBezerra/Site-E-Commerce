@@ -8,6 +8,26 @@
 	<title>Carrinho</title>
 </head>
 <body>
+	<div class="topo">
+		<div class="topointerior">
+			<div class="logo">
+				Game Station
+			</div>
+			
+
+			<div class="menu">
+				<img src="img/list.png" class="menuMobile" onclick="toggleMenu()">
+				<ul id="menu">
+					<li><a href="/index">HOME</a></li>
+					<li><a href="/usuario/logar">LOGIN</a></li>
+					<li><a href="/usuario/formulario">CADASTRO</a></li>
+					<!-- <li id="cart"><a href="/produto/carrinho"><img src="img/cart.png"></a></li>
+					<li><a href="/galeria">GALERIA</a></li>
+					<li><a href="/formulario">FORMULÁRIO</a></li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<h4>Sua compra</h4>
 		
@@ -22,7 +42,9 @@
 				<tr th:each="produto : ${produtos}" class="row">
 					<td th:text="${produto.nome}"></td>
 					<td th:text="${produto.preco}"></td>
-					<td><a class="waves-effect waves-light btn-small"><i class="material-icons left">delete</i></a></td>
+					<td><img id="produto-imagem" th:src="@{'/img/produtos/'+ ${produto.nome} + '.jpg'}"/> </td>
+					<td><a class="waves-effect waves-light btn-small" th:href="@{/produto/carrinho/excluir/{id}(id = ${produto.id})}"><i class="material-icons left">delete</i></a></td>
+			
 				</tr>
 				
 			</tbody>
@@ -31,7 +53,7 @@
 		<div class="total-preco row">
 			<input type="text" name="lname" class="input-field col s2" disabled>
 		</div>
-		<a class="waves-effect waves-light btn">Finalizar compra</a>
+		<a class="waves-effect waves-light btn" >Finalizar compra</a>
 	</div>
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>	
 </body>

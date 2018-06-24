@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http//thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="/css/template-style.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="/js/script.js"></script>
@@ -19,9 +22,11 @@
 				<img src="img/list.png" class="menuMobile" onclick="toggleMenu()">
 				<ul id="menu">
 					<li><a href="/index">HOME</a></li>
-					<li><a href="/sobre">SOBRE</a></li>
-					<li><a href="/galeria">GALERIA</a></li>
-					<li><a href="/formulario">FORMULÁRIO</a></li>
+					<li><a href="/usuario/logar">LOGIN</a></li>
+					<li><a href="/usuario/formulario">CADASTRO</a></li>
+					<li id="cart"><a href="/produto/carrinho"><img src="img/cart.png"></a></li>
+					<!-- <li><a href="/galeria">GALERIA</a></li>
+					<li><a href="/formulario">FORMULÁRIO</a></li>-->
 				</ul>
 			</div>
 		</div>
@@ -40,51 +45,21 @@
 	<div class="conteudo">
 		<div class="conteudointerno">
 			<div class="titulo">
-				Promoções do dia
+				Lista de Produtos
 			</div>
-			<div class="produtos">
-				<div class="info-produto">
-					<img src="img/produtos/destaques/devil.jpg">
-					<h3>Devil May Cry HD Collection</h3>
-				
-					R$ 78,00
-				</div>
-				<div class="info-produto">
-					<img src="img/produtos/destaques/finalfantasy.jpg">
-					<h3>Final Fantasy XV</h3>
-					
-					R$ 90,00	
-				</div>
-				<div class="info-produto">
-					<img src="img/produtos/destaques/AssassinsCreed.jpg">
-					<h3>Assassins Creed Rogue</h3>
-					
-					R$ 80,00
-						
-				</div>
-				<div class="info-produto">
-					<img src="img/produtos/destaques/godOfWar.jpg">
-					<h3>God of War 4</h3>
-					
-					R$ 150,00	
-				</div>
-				<div class="info-produto">
-					<img src="img/produtos/destaques/fifa18.jpg">
-					<h3>Fifa 18</h3>
-					
-					R$ 88,90
-						
-				</div>
-				<div class="info-produto">
-					<img src="img/produtos/destaques/DBZ.jpg">
-					<h3>Dragon Ball Fighter Z</h3>
-					
-					R$ 130,00
-						
-				</div>
-			</div>
+			
+			<ul style="list-style-type:none" class="produtos">
+  				<li class="info-produto" th:each="produto : ${produtos}">
+  					<img th:src="@{'img/produtos/'+ ${produto.nome} + '.jpg'}">
+					<h5 id="nome-produto"><span th:text="${produto.nome}"></span></h5>
+					<span th:text="${produto.preco}"></span><br>
+					<a sec:authorize="!isAuthenticated()" th:href="@{/usuario/formulario}" id="btn-comprar" class="waves-effect waves-light btn-small">Comprar</a>
+  					<a sec:authorize="hasRole('ROLE_USER')" th:href="@{/produto/carrinho/adicionar/{id}(id = ${produto.id})}" id="btn-comprar" class="waves-effect waves-light btn-small">Comprar</a>
+  				</li>
+			</ul>
 		</div>
 	</div>
+	
 	<footer>
 		<div id="rodape">
 			Contato: (11) 1111-1111<br>
@@ -92,5 +67,8 @@
 			produzido por: Maike Bezerra
 		</div>
 	</footer>
+	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

@@ -10,19 +10,13 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 public class Role implements GrantedAuthority{
-	
+
 	@Id
 	private String papel;
 	
 	@ManyToMany(mappedBy = "roles")
-	private List<Usuario> usuarios;
-
-	@Override
-	public String getAuthority() {
-		
-		return this.papel;
-	}
-
+	private List<Usuario> usuario;
+	
 	public String getPapel() {
 		return papel;
 	}
@@ -30,5 +24,10 @@ public class Role implements GrantedAuthority{
 	public void setPapel(String papel) {
 		this.papel = papel;
 	}
-	
+
+	@Override
+	public String getAuthority() {
+		return this.papel;
+	}
+
 }

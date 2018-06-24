@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="row">
 	    	<form class="col s12" method="post" action="/usuario/salvar" enctype="multipart/form-data" th:object="${usuario}">
-	      		<input type="hidden" th:field="*{cpf}">
+	      		<input type="hidden" th:field="*{id}">
 	      		<div class="row">
 	        		<div class="input-field col s8">
 	          			<input placeholder="Placeholder" id="nome" type="text" class="validate" th:field="*{nome}">
@@ -38,8 +38,8 @@
 	          			<label for="login">Login</label>
 	        		</div>
 	        		<div class="input-field col s6">
-	          			<input id="password" type="password" class="validate" th:field="*{password}">
-	          			<label for="password">Password</label>
+	          			<input id="senha" type="password" class="validate" th:field="*{senha}">
+	          			<label for="senha">Password</label>
 	        		</div>
 	      		</div>
 	      		<button class="btn waves-effect waves-light" type="submit" name="action">Submit

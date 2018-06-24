@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,6 +23,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Usuario implements UserDetails{
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String cpf;
 	private String nome;
 	private String endereco;
@@ -30,21 +35,31 @@ public class Usuario implements UserDetails{
 	private Date dataNascimento;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "usuarios_roles",
-			joinColumns = @JoinColumn(
-					name = "usuario_cpf", referencedColumnName = "cpf"))
+	@JoinTable( 
+	        name = "usuarios_roles", 
+	        joinColumns = @JoinColumn(
+	          name = "usuario_id", referencedColumnName = "id"), 
+	        inverseJoinColumns = @JoinColumn(
+	          name = "role_id", referencedColumnName = "papel")) 
 	private List<Role> roles;
-	
+
 	@ManyToMany
 	@JoinTable(
 			name = "usuarios_produtos",
 			joinColumns = @JoinColumn(
-					name = "usuario_cpf", referencedColumnName = "cpf"))
+					name = "usuario_id", referencedColumnName = "id"))
 	private List<Produto> produtos;
 	
 	private String login;
 	private String senha;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}	
 	
 	public String getCpf() {
 		return cpf;
@@ -78,20 +93,20 @@ public class Usuario implements UserDetails{
 		this.dataNascimento = dataNascimento;
 	}
 
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
-
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	public String getLogin() {
@@ -114,34 +129,38 @@ public class Usuario implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return (Collection<? extends GrantedAuthority>) this.roles;
 	}
-	
-	@Override
-	public String getUsername() {
-		return this.login;
-	}
-	
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-	
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-	
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
+
 	@Override
 	public String getPassword() {
 		return this.senha;
 	}
+
+	@Override
+	public String getUsername() {
+		return this.login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	
 	
 	
 }
