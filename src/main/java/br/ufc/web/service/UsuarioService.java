@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import br.ufc.web.model.Role;
 import br.ufc.web.model.Usuario;
 import br.ufc.web.repository.UsuarioRepository;
 
@@ -13,9 +12,6 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	
-	
 	
 	public void adicionarUsuario(Usuario user) {
 		
