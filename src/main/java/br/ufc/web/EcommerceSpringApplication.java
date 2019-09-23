@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class CrudSpring1Application {
+public class EcommerceSpringApplication {
 
 	public static void main(String[] args) {	
-		SpringApplication.run(CrudSpring1Application.class, args);		
+		SpringApplication.run(EcommerceSpringApplication.class, args);		
 	}
 }
