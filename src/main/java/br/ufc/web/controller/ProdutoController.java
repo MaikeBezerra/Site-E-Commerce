@@ -53,9 +53,9 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/listar")
-	public ModelAndView listarProdutos() {
+	public ModelAndView listaDeProdutos() {
 
-		List<Produto> produtos = service.retornarTodosOsProdutos();
+		List<Produto> produtos = service.produtos();
 		ModelAndView mv = new ModelAndView("produto/produto-lista");
 
 		mv.addObject("produtos", produtos);

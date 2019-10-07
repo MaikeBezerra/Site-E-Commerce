@@ -26,7 +26,7 @@ public class ProdutoService {
 		repository.save(produto);
 	}
 
-	public List<Produto> retornarTodosOsProdutos() {
+	public List<Produto> produtos() {
 		return repository.findAll();
 	}
 
