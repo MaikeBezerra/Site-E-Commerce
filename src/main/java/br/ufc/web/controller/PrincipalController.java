@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.ufc.web.model.Produto;
@@ -16,7 +16,7 @@ public class PrincipalController {
 	@Autowired
 	ProdutoService service;
 	
-	@RequestMapping("/index")
+	@GetMapping("/index")
 	public ModelAndView paginaInicial() {
 		List<Produto> produtos = service.retornarTodosOsProdutos();
 		ModelAndView mv = new ModelAndView("index");
@@ -26,7 +26,7 @@ public class PrincipalController {
 	}
 	
 	
-	@RequestMapping("/galeria")
+	@GetMapping("/galeria")
 	public ModelAndView galeriaProdutos() {
 		List<Produto> produtos = service.retornarTodosOsProdutos();
 		ModelAndView mv = new ModelAndView("galeria");
@@ -35,17 +35,17 @@ public class PrincipalController {
 		return mv;
 	}
 	
-	@RequestMapping("/sobre")
+	@GetMapping("/sobre")
 	public String sobre() {
 		return "sobre";
 	}
 	
-	@RequestMapping("/formulario")
+	@GetMapping("/formulario")
 	public String formularioEmpresa() {
 		return "formulario1";
 	}
 	
-	@RequestMapping("/cadastro")
+	@GetMapping("/cadastro")
 	public String cadastroUser() {
 		return "cadastro";
 	}

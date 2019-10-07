@@ -18,14 +18,12 @@ public class Carrinho {
 		 produtos = new ArrayList<Produto>();
 	}
 	 
-	
 	public static Carrinho getInstance() {
 		if (uniqueInstance == null)
 			uniqueInstance = new Carrinho();
 	 
 		return uniqueInstance;
 	}
-	
 	
 	public void addProduto(Produto produto){
 		produtos.add(produto);
@@ -38,7 +36,6 @@ public class Carrinho {
 	public void clearProdutos(){
 		produtos.clear();
 	}
-	
 	
 	public List<Produto> produtos(){
 		return this.produtos;

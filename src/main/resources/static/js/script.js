@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	
-	
 	$("#maisProdutos").hide();
 
 	$('#button_maisProdutos').click(function (e) {
@@ -19,7 +18,6 @@ brOptions = {
 };
 
 $('#br_celphones').mask(BRMaskBehavior, brOptions);
-
 
 function toggleMenu(){
 	var menu = document.getElementById("menu");
