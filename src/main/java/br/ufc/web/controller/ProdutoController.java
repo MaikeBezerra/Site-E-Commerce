@@ -81,7 +81,7 @@ public class ProdutoController {
 	
 	
 	@RequestMapping("/carrinho")
-	public ModelAndView carrinho() {
+	public ModelAndView produtosDoCarrinho() {
 		 
 		List<Produto> produtos = new ArrayList<Produto>(); 
 		produtos.addAll(cart().produtos());
@@ -92,7 +92,7 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping("/carrinho/adicionar/{id}")
-	public String addProdutoNoCarrinho(@PathVariable long id) {
+	public String adicionarProdutoNoCarrinho(@PathVariable long id) {
 		Produto produto = service.buscarPorId(id);
 		cart().addProduto(produto);
 		return "redirect:/index";
