@@ -55,7 +55,7 @@ public class ProdutoController {
 	@GetMapping("/listar")
 	public ModelAndView listaDeProdutos() {
 
-		List<Produto> produtos = service.produtos();
+		List<Produto> produtos = service.listar();
 		ModelAndView mv = new ModelAndView("produto/produto-lista");
 
 		mv.addObject("produtos", produtos);
@@ -65,7 +65,7 @@ public class ProdutoController {
 	
 	@RequestMapping("/atualizar/{id}")
 	public ModelAndView atualizarProduto(@PathVariable Long id) {
-		Produto produto = service.buscarPorId(id);
+		Produto produto = service.buscar(id);
 		ModelAndView mv = new ModelAndView("produto/produto-formulario");
 		
 		mv.addObject("produto", produto);
@@ -75,7 +75,7 @@ public class ProdutoController {
 	
 	@RequestMapping("/excluir/{id}")
 	public String excluirProduto(@PathVariable long id) {
-		service.removerProduto(id);
+		service.remover(id);
 		return "redirect:/produto/listar";
 	}
 	
@@ -93,21 +93,21 @@ public class ProdutoController {
 	
 	@RequestMapping("/carrinho/adicionar/{id}")
 	public String adicionarProdutoNoCarrinho(@PathVariable long id) {
-		Produto produto = service.buscarPorId(id);
+		Produto produto = service.buscar(id);
 		cart().addProduto(produto);
 		return "redirect:/index";
 	}
 	
 	@RequestMapping("/carrinho/excluir/{id}")
 	public String excluirProdutoDoCarrinho(@PathVariable long id) {
-		Produto produto = service.buscarPorId(id);
+		Produto produto = service.buscar(id);
 		cart().removeProduto(produto);
 		return "redirect:/produto/carrinho";
 	}
 	
 	@RequestMapping("/carrinho/finalizar/{id}")
 	public String finalizarCompra(@PathVariable long id) {
-		Usuario usuario = usuarioService.buscaPorId(id);
+		Usuario usuario = usuarioService.buscar(id);
 		usuario.getProdutos().addAll(cart().produtos());
 		cart().clearProdutos();
 		return "redirect:/index";

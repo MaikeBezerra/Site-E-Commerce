@@ -37,7 +37,7 @@ public class UsuarioController {
 	
 	@GetMapping("/listar")
 	public ModelAndView listaDeUsuarios() {
-		Iterable<Usuario> usuarios = usuarioService.usuarios();
+		Iterable<Usuario> usuarios = usuarioService.listar();
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("todasAsusuarios", usuarios);
@@ -47,7 +47,7 @@ public class UsuarioController {
 	
 	@RequestMapping("/atualizar/{id}")
 	public ModelAndView atualizarusuario(@PathVariable Long id) {
-		Usuario usuario = usuarioService.buscaPorId(id);
+		Usuario usuario = usuarioService.buscar(id);
 		ModelAndView mv = new ModelAndView("cadastro");
 		mv.addObject("usuario", usuario);
 		
@@ -56,7 +56,7 @@ public class UsuarioController {
 	
 	@RequestMapping("/excluir/{id}")
 	public ModelAndView excluirUsuario(@PathVariable Long id) {
-		usuarioService.removerUsuario(id);
+		usuarioService.remover(id);
 		ModelAndView mv = new ModelAndView("redirect:/usuario/listar");
 		return mv;
 	}
