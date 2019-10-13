@@ -11,12 +11,10 @@ import br.ufc.web.repository.ProdutoRepository;
 import br.ufc.web.util.FileUtil;
 
 @Service
-public class ProdutoService {
+public class ProdutoService implements GenericService<Produto>{
 
 	@Autowired
 	ProdutoRepository repository;
-	
-	
 	
 	public void adicionarProduto(Produto produto, MultipartFile imagem) {
 		if (imagem != null && !imagem.isEmpty()) {
@@ -26,17 +24,19 @@ public class ProdutoService {
 		repository.save(produto);
 	}
 
-	public List<Produto> produtos() {
+	@Override
+	public List<Produto> listar() {
 		return repository.findAll();
 	}
 
-	public Produto buscarPorId(long id) {
+	@Override
+	public Produto buscar(Long id) {
 		return repository.getOne(id);
 	}
 
-	public void removerProduto(long id) {
+	@Override
+	public void remover(Long id) {
 		repository.deleteById(id);
-		
 	}
 
 }
