@@ -1,7 +1,6 @@
 package br.ufc.web.service;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class ProdutoService implements GenericService<Produto>{
 	ProdutoRepository repository;
 	
 	public void adicionarProduto(Produto produto, MultipartFile imagem) {
-		salvarImagemProduto(produto.getNome(), imagem);
+		FileUtil.salvarImagemProduto(produto.getNome(), imagem);
 		repository.save(produto);
 	}
 
@@ -37,15 +36,4 @@ public class ProdutoService implements GenericService<Produto>{
 		repository.deleteById(id);
 	}
 	
-	public void salvarImagemProduto(String nomeDoProduto, MultipartFile imagem) {
-		if (imagemIsValid(imagem)) {
-			String caminho = "src/main/resources/static/img/produtos/" + nomeDoProduto + ".jpg";
-			FileUtil.salvarImagem(caminho, imagem);
-		}
-	}
-	
-	public Boolean imagemIsValid(MultipartFile imagem) {
-		return Objects.nonNull(imagem) && !imagem.isEmpty();
-	}
-
 }
