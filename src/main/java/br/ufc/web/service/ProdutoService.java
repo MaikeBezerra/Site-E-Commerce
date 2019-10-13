@@ -16,8 +16,6 @@ public class ProdutoService {
 	@Autowired
 	ProdutoRepository repository;
 	
-	
-	
 	public void adicionarProduto(Produto produto, MultipartFile imagem) {
 		if (imagem != null && !imagem.isEmpty()) {
 			String caminho = "src/main/resources/static/img/produtos/" + produto.getNome() + ".jpg";
