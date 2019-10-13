@@ -2,6 +2,7 @@ package br.ufc.web.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
@@ -13,13 +14,12 @@ public class Carrinho {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Produto> produtos; 
 	
-	
 	private Carrinho() {
 		 produtos = new ArrayList<Produto>();
 	}
 	 
 	public static Carrinho getInstance() {
-		if (uniqueInstance == null)
+		if (Objects.isNull(uniqueInstance))
 			uniqueInstance = new Carrinho();
 	 
 		return uniqueInstance;

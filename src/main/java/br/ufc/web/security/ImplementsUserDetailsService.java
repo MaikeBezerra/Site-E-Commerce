@@ -1,5 +1,7 @@
 package br.ufc.web.security;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +20,7 @@ public class ImplementsUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		Usuario usuario = ur.findByLogin(login);
-		if (usuario == null) {
+		if (Objects.isNull(usuario)) {
 			throw new UsernameNotFoundException("Usuário não encontrado!");
 		}
 		return usuario;

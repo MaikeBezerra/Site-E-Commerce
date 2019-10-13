@@ -31,8 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/produto/formulario").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/usuario/logar").permitAll()
-		.and().logout().logoutSuccessUrl("/usuario/logar?logout")// logout sucesso
-		.permitAll();
+		.and().logout().logoutSuccessUrl("/usuario/logar?logout").permitAll();
 	}
 	
 	@Override
