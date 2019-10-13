@@ -18,21 +18,12 @@ public class PrincipalController {
 	
 	@GetMapping("/index")
 	public ModelAndView paginaInicial() {
-		List<Produto> produtos = service.listar();
-		ModelAndView mv = new ModelAndView("index");
-		
-		mv.addObject("produtos", produtos);
-		return mv;
+		return pagina("index");
 	}
-	
 	
 	@GetMapping("/galeria")
 	public ModelAndView galeriaProdutos() {
-		List<Produto> produtos = service.listar();
-		ModelAndView mv = new ModelAndView("galeria");
-		
-		mv.addObject("produtos", produtos);
-		return mv;
+		return pagina("galeria");
 	}
 	
 	@GetMapping("/sobre")
@@ -48,5 +39,13 @@ public class PrincipalController {
 	@GetMapping("/cadastro")
 	public String cadastroUser() {
 		return "cadastro";
+	}
+	
+	public ModelAndView pagina(String pagina) {
+		List<Produto> produtos = service.listar();
+		ModelAndView mv = new ModelAndView(pagina);
+		
+		mv.addObject("produtos", produtos);
+		return mv;
 	}
 }
