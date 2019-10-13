@@ -17,10 +17,7 @@ public class ProdutoService implements GenericService<Produto>{
 	ProdutoRepository repository;
 	
 	public void adicionarProduto(Produto produto, MultipartFile imagem) {
-		if (imagem != null && !imagem.isEmpty()) {
-			String caminho = "src/main/resources/static/img/produtos/" + produto.getNome() + ".jpg";
-			FileUtil.salvarImagem(caminho, imagem);
-		}
+		salvarImagemProduto(produto.getNome(), imagem);
 		repository.save(produto);
 	}
 
@@ -37,6 +34,13 @@ public class ProdutoService implements GenericService<Produto>{
 	@Override
 	public void remover(Long id) {
 		repository.deleteById(id);
+	}
+	
+	public void salvarImagemProduto(String nomeDoProduto, MultipartFile imagem) {
+		if (imagem != null && !imagem.isEmpty()) {
+			String caminho = "src/main/resources/static/img/produtos/" + nomeDoProduto + ".jpg";
+			FileUtil.salvarImagem(caminho, imagem);
+		}
 	}
 
 }

@@ -16,8 +16,7 @@ public class UsuarioService implements GenericService<Usuario>{
 	private UsuarioRepository usuarioRepository;
 	
 	public void adicionarUsuario(Usuario user) {
-		
-		user.setSenha(new BCryptPasswordEncoder().encode(user.getSenha()));
+		user.setSenha(criptografar(user.getSenha()));
 		usuarioRepository.save(user);
 	}
 	
@@ -38,5 +37,9 @@ public class UsuarioService implements GenericService<Usuario>{
 	@Override
 	public void remover(Long id) {
 		usuarioRepository.deleteById(id);
+	}
+	
+	public String criptografar(String senha) {
+		return new BCryptPasswordEncoder().encode(senha);
 	}
 }

@@ -40,37 +40,25 @@ public class ProdutoController {
 	
 	@RequestMapping("/formulario")
 	public ModelAndView formularioProduto() {
-		ModelAndView mv = new ModelAndView("produto/produto-formulario");
-		mv.addObject("produto", new Produto());
-		return mv;
+		return addObjectModel("produto/produto-formulario", "produto", new Produto());
 	}
 	
 	@PostMapping("/salvar")
 	public ModelAndView salvarProduto(@Valid Produto produto, @RequestParam(value="imagem") MultipartFile imagem) {
 		service.adicionarProduto(produto, imagem);
-		ModelAndView mv = new ModelAndView("redirect:/produto/listar");
-		return mv;
+		return new ModelAndView("redirect:/produto/listar");
 	}
 	
 	@GetMapping("/listar")
 	public ModelAndView listaDeProdutos() {
-
 		List<Produto> produtos = service.listar();
-		ModelAndView mv = new ModelAndView("produto/produto-lista");
-
-		mv.addObject("produtos", produtos);
-		
-		return mv;
+		return addObjectModel("produto/produto-lista", "produtos", produtos);
 	}
 	
 	@RequestMapping("/atualizar/{id}")
 	public ModelAndView atualizarProduto(@PathVariable Long id) {
 		Produto produto = service.buscar(id);
-		ModelAndView mv = new ModelAndView("produto/produto-formulario");
-		
-		mv.addObject("produto", produto);
-		
-		return mv;
+		return addObjectModel("produto/produto-formulario", "produto", produto);
 	}
 	
 	@RequestMapping("/excluir/{id}")
@@ -111,6 +99,12 @@ public class ProdutoController {
 		usuario.getProdutos().addAll(cart().produtos());
 		cart().clearProdutos();
 		return "redirect:/index";
+	}
+	
+	public ModelAndView addObjectModel(String pagina, String elemento, Object obj) {
+		ModelAndView mv = new ModelAndView(pagina);
+		mv.addObject(elemento, obj);
+		return mv;
 	}
 	
 }
