@@ -18,7 +18,7 @@ public class PrincipalController {
 	
 	@GetMapping("/index")
 	public ModelAndView paginaInicial() {
-		List<Produto> produtos = service.retornarTodosOsProdutos();
+		List<Produto> produtos = service.produtos();
 		ModelAndView mv = new ModelAndView("index");
 		
 		mv.addObject("produtos", produtos);
@@ -28,7 +28,7 @@ public class PrincipalController {
 	
 	@GetMapping("/galeria")
 	public ModelAndView galeriaProdutos() {
-		List<Produto> produtos = service.retornarTodosOsProdutos();
+		List<Produto> produtos = service.produtos();
 		ModelAndView mv = new ModelAndView("galeria");
 		
 		mv.addObject("produtos", produtos);

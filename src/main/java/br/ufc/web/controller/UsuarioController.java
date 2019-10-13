@@ -36,8 +36,8 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/listar")
-	public ModelAndView listarusuario() {
-		Iterable<Usuario> usuarios = usuarioService.allUsers();
+	public ModelAndView listaDeUsuarios() {
+		Iterable<Usuario> usuarios = usuarioService.usuarios();
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("todasAsusuarios", usuarios);
