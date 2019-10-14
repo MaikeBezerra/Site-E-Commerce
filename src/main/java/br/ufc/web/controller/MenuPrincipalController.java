@@ -11,7 +11,7 @@ import br.ufc.web.model.Produto;
 import br.ufc.web.service.ProdutoService;
 
 @Controller
-public class PrincipalController {
+public class MenuPrincipalController {
 	
 	@Autowired
 	ProdutoService service;
