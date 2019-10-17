@@ -2,6 +2,7 @@ package br.ufc.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
-	@RequestMapping("/formulario")
+	@GetMapping("/formulario")
 	public ModelAndView formulariousuario() {
 		return addObjectModel("cadastro", "usuario", new Usuario());
 	}
@@ -38,21 +39,16 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	@RequestMapping("/atualizar/{id}")
+	@PostMapping("/atualizar/{id}")
 	public ModelAndView atualizarusuario(@PathVariable Long id) {
 		Usuario usuario = usuarioService.buscar(id);
 		return addObjectModel("cadastro", "usuario", usuario);
 	}
 	
-	@RequestMapping("/excluir/{id}")
+	@DeleteMapping("/excluir/{id}")
 	public ModelAndView excluirUsuario(@PathVariable Long id) {
 		usuarioService.remover(id);
 		return new ModelAndView("redirect:/usuario/listar");
-	}
-	
-	@RequestMapping("/logar")
-	public ModelAndView logar() {
-		return new ModelAndView("login");
 	}
 	
 	public ModelAndView addObjectModel(String pagina, String elemento, Object obj) {

@@ -16,7 +16,7 @@ public class MenuPrincipalController {
 	@Autowired
 	ProdutoService service;
 	
-	@GetMapping("/index")
+	@GetMapping("/")
 	public ModelAndView paginaInicial() {
 		return pagina("index");
 	}
@@ -39,6 +39,11 @@ public class MenuPrincipalController {
 	@GetMapping("/cadastro")
 	public String cadastroUser() {
 		return "cadastro";
+	}
+	
+	@GetMapping("/login")
+	public String loginUser() {
+		return "login";
 	}
 	
 	public ModelAndView pagina(String pagina) {
