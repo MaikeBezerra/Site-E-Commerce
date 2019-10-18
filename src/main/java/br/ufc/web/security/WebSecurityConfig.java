@@ -20,8 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers("/").permitAll()
-		.antMatchers("/galeria").permitAll()
-		.antMatchers("/usuario/carrinho").permitAll()
+		.antMatchers("/sobre").permitAll()
+		.antMatchers("/formulario").permitAll()
 		.antMatchers("/usuario/formulario").permitAll()
 		.antMatchers("/usuario/salvar").permitAll()
 		.antMatchers("/produto/carrinho").hasRole("USER")

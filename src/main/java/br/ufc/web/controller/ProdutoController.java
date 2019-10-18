@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoService service;
 	
-	@RequestMapping("/formulario")
+	@GetMapping("/formulario")
 	public ModelAndView formularioProduto() {
 		return addObjectModel("produto/produto-formulario", "produto", new Produto());
 	}
@@ -43,13 +44,13 @@ public class ProdutoController {
 		return addObjectModel("produto/produto-lista", "produtos", produtos);
 	}
 	
-	@RequestMapping("/atualizar/{id}")
+	@PostMapping("/atualizar/{id}")
 	public ModelAndView atualizarProduto(@PathVariable Long id) {
 		Produto produto = service.buscar(id);
 		return addObjectModel("produto/produto-formulario", "produto", produto);
 	}
 	
-	@RequestMapping("/excluir/{id}")
+	@DeleteMapping("/excluir/{id}")
 	public String excluirProduto(@PathVariable long id) {
 		service.remover(id);
 		return "redirect:/produto/listar";
