@@ -1,7 +1,6 @@
 package br.ufc.web.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,8 @@ import br.ufc.web.service.ProdutoService;
 import br.ufc.web.service.UsuarioService;
 
 @Controller
-@RequestMapping("/produto")
+@Transactional
+@RequestMapping("produto/carrinho")
 public class CarrinhoController {
 	
 	@Autowired
@@ -26,32 +26,29 @@ public class CarrinhoController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@RequestMapping("/carrinho")
+	@GetMapping
 	public ModelAndView produtosDoCarrinho() {
 		 
-		List<Produto> produtos = new ArrayList<Produto>(); 
-		produtos.addAll(Carrinho.getInstance().produtos());
-		
 		ModelAndView mv = new ModelAndView("carrinho");
-		mv.addObject("produtos", produtos);
+		mv.addObject("produtos", Carrinho.getInstance().produtos());
 		return mv;
 	}
 	
-	@RequestMapping("/carrinho/adicionar/{id}")
+	@RequestMapping("/adicionar/{id}")
 	public String adicionarProdutoNoCarrinho(@PathVariable long id) {
 		Produto produto = service.buscar(id);
 		Carrinho.getInstance().addProduto(produto);
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
-	@GetMapping("/carrinho/excluir/{id}")
+	@GetMapping("/excluir/{id}")
 	public String excluirProdutoDoCarrinho(@PathVariable long id) {
 		Produto produto = service.buscar(id);
 		Carrinho.getInstance().removeProduto(produto);
 		return "redirect:/produto/carrinho";
 	}
 	
-	@GetMapping("/carrinho/finalizar/{id}")
+	@GetMapping("/finalizar/{id}")
 	public String finalizarCompra(@PathVariable long id) {
 		Usuario usuario = usuarioService.buscar(id);
 		usuario.getProdutos().addAll(Carrinho.getInstance().produtos());

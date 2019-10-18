@@ -18,8 +18,8 @@
 			<div class="menu">
 				<img src="img/list.png" class="menuMobile" onclick="toggleMenu()">
 				<ul id="menu">
-					<li><a href="/index">HOME</a></li>
-					<li><a href="/usuario/logar">LOGIN</a></li>
+					<li><a href="/">HOME</a></li>
+					<li><a href="/login">LOGIN</a></li>
 					<li><a href="/usuario/formulario">CADASTRO</a></li>
 					<!-- <li id="cart"><a href="/produto/carrinho"><img src="img/cart.png"></a></li>
 					<li><a href="/galeria">GALERIA</a></li>
@@ -44,9 +44,7 @@
 					<td th:text="${produto.preco}"></td>
 					<td><img id="produto-imagem" th:src="@{'/img/produtos/'+ ${produto.nome} + '.jpg'}"/> </td>
 					<td><a class="waves-effect waves-light btn-small" th:href="@{/produto/carrinho/excluir/{id}(id = ${produto.id})}"><i class="material-icons left">delete</i></a></td>
-			
 				</tr>
-				
 			</tbody>
 		</table><br>
 		TOTAL :
