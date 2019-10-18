@@ -4,11 +4,11 @@
 	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Game Station</title>
 	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="/css/template-style.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<script type="text/javascript" src="/js/script.js"></script>
+	
 </head>
 <body>
 	<div th:replace="fragments/menu :: menu"></div>
@@ -42,13 +42,8 @@
 		</div>
 	</div>
 	
-	<footer>
-		<div id="rodape">
-			Contato: (11) 1111-1111<br>
-			data de criação: 06/05/2018<br>
-			produzido por: Maike Bezerra
-		</div>
-	</footer>
+	<div th:replace="fragments/footer :: footer"></div>
+	
 	<script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/js/script.js"></script>

@@ -5,10 +5,8 @@
 	<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
 </head>
 <body>
-	
-	<h2>Cadastro</h2>
-	
 	<div class="container">
+		<h3>Cadastro</h3>
 		<div class="row">
 	    	<form class="col s12" method="post" action="/usuario/salvar" enctype="multipart/form-data" th:object="${usuario}">
 	      		<input type="hidden" th:field="*{id}">
