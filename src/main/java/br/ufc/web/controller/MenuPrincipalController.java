@@ -5,45 +5,54 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.ufc.web.model.Produto;
 import br.ufc.web.service.ProdutoService;
 
 @Controller
+@RequestMapping("/")
 public class MenuPrincipalController {
 	
 	@Autowired
 	ProdutoService service;
 	
-	@GetMapping("/")
+	private static final String INDEX = "index";
+	private static final String GALERIA = "galeria";
+	private static final String SOBRE = "sobre";
+	private static final String CADASTRO = "cadastro";
+	private static final String FORMULARIO = "formulario";
+	private static final String LOGIN = "login";
+	
+	@GetMapping
 	public ModelAndView paginaInicial() {
-		return pagina("index");
+		return pagina(INDEX);
 	}
 	
-	@GetMapping("/galeria")
+	@GetMapping(GALERIA)
 	public ModelAndView galeriaProdutos() {
-		return pagina("galeria");
+		return pagina(GALERIA);
 	}
 	
-	@GetMapping("/sobre")
+	@GetMapping(SOBRE)
 	public String sobre() {
-		return "sobre";
+		return SOBRE;
 	}
 	
-	@GetMapping("/formulario")
+	@GetMapping(FORMULARIO)
 	public String formularioEmpresa() {
-		return "formulario1";
+		return FORMULARIO;
 	}
 	
-	@GetMapping("/cadastro")
+	@GetMapping(CADASTRO)
 	public String cadastroUser() {
-		return "cadastro";
+		return CADASTRO;
 	}
 	
-	@GetMapping("/login")
+	@GetMapping(LOGIN)
 	public String loginUser() {
-		return "login";
+		return LOGIN;
 	}
 	
 	public ModelAndView pagina(String pagina) {

@@ -28,7 +28,6 @@ public class CarrinhoController {
 	
 	@GetMapping
 	public ModelAndView produtosDoCarrinho() {
-		 
 		ModelAndView mv = new ModelAndView("carrinho");
 		mv.addObject("produtos", Carrinho.getInstance().produtos());
 		return mv;

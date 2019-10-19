@@ -27,9 +27,11 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoService service;
 	
+	public static final String PRODUTO = "produto";
+	
 	@GetMapping("/formulario")
 	public ModelAndView formularioProduto() {
-		return addObjectModel("produto/produto-formulario", "produto", new Produto());
+		return addObjectModel("produto/produto-formulario", PRODUTO, new Produto());
 	}
 	
 	@PostMapping("/salvar")
@@ -47,7 +49,7 @@ public class ProdutoController {
 	@PostMapping("/atualizar/{id}")
 	public ModelAndView atualizarProduto(@PathVariable Long id) {
 		Produto produto = service.buscar(id);
-		return addObjectModel("produto/produto-formulario", "produto", produto);
+		return addObjectModel("produto/produto-formulario", PRODUTO, produto);
 	}
 	
 	@DeleteMapping("/excluir/{id}")

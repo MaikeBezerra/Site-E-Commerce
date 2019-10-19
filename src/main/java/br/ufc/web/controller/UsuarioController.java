@@ -19,9 +19,12 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
+	private static final String USUARIO = "usuario";
+	private static final String CADASTRO = "cadastro";
+	
 	@GetMapping("/formulario")
 	public ModelAndView formulariousuario() {
-		return addObjectModel("cadastro", "usuario", new Usuario());
+		return addObjectModel(CADASTRO, USUARIO, new Usuario());
 	}
 	
 	@PostMapping("/salvar")
@@ -42,7 +45,7 @@ public class UsuarioController {
 	@PostMapping("/atualizar/{id}")
 	public ModelAndView atualizarusuario(@PathVariable Long id) {
 		Usuario usuario = usuarioService.buscar(id);
-		return addObjectModel("cadastro", "usuario", usuario);
+		return addObjectModel(CADASTRO, USUARIO, usuario);
 	}
 	
 	@DeleteMapping("/excluir/{id}")
