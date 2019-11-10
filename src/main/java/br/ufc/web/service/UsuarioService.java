@@ -2,44 +2,18 @@ package br.ufc.web.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import br.ufc.web.model.Usuario;
-import br.ufc.web.repository.UsuarioRepository;
 
-@Service
-public class UsuarioService implements GenericService<Usuario>{
-	
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
-	public void adicionarUsuario(Usuario user) {
-		user.setSenha(criptografar(user.getSenha()));
-		usuarioRepository.save(user);
-	}
-	
-	public Usuario buscarPorLogin(String login){
-		return usuarioRepository.findByLogin(login);
-	}
+public interface UsuarioService {
 
-	@Override
-	public List<Usuario> listar() {
-		return usuarioRepository.findAll();
-	}
+	List<Usuario> listar();
 
-	@Override
-	public Usuario buscar(Long id) {
-		return usuarioRepository.getOne(id);
-	}
+	Usuario buscar(Long id);
 
-	@Override
-	public void remover(Long id) {
-		usuarioRepository.deleteById(id);
-	}
-	
-	public String criptografar(String senha) {
-		return new BCryptPasswordEncoder().encode(senha);
-	}
+	void remover(Long id);
+
+	Usuario buscarPorLogin(String login);
+
+	void adicionarUsuario(Usuario user);
+
 }

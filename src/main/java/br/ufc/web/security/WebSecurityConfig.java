@@ -19,9 +19,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-		.antMatchers("/index").permitAll()
-		.antMatchers("/galeria").permitAll()
-		.antMatchers("/usuario/carrinho").permitAll()
+		.antMatchers("/").permitAll()
+		.antMatchers("/sobre").permitAll()
+		.antMatchers("/formulario").permitAll()
 		.antMatchers("/usuario/formulario").permitAll()
 		.antMatchers("/usuario/salvar").permitAll()
 		.antMatchers("/produto/carrinho").hasRole("USER")
@@ -30,8 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/produto/carrinho/finalizar").hasRole("USER")
 		.antMatchers("/produto/formulario").hasRole("ADMIN")
 		.anyRequest().authenticated()
-		.and().formLogin().loginPage("/usuario/logar").permitAll()
-		.and().logout().logoutSuccessUrl("/usuario/logar?logout").permitAll();
+		.and().formLogin().loginProcessingUrl("/login").loginPage("/login").permitAll()
+		.and().logout().logoutSuccessUrl("/logout").permitAll();
 	}
 	
 	@Override

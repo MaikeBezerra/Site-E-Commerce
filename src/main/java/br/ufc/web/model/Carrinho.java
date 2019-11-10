@@ -30,6 +30,11 @@ public class Carrinho {
 	}
 	
 	public void removeProduto(Produto produto){
+		for (int i = 0; i < produtos.size(); i++) {
+			if (listContensItem(i, produto)) {
+				produtos.remove(i);
+			}
+		}
 		produtos.remove(produto);
 	}
 	
@@ -39,5 +44,9 @@ public class Carrinho {
 	
 	public List<Produto> produtos(){
 		return this.produtos;
+	}
+	
+	private boolean listContensItem(int position, Produto produto) {
+		return Objects.equals(produtos.get(position), produto);
 	}
 }

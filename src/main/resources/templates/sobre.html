@@ -1,39 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http//thymeleaf.org"
+	  xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Sobre</title>
 	<link rel="stylesheet" type="text/css" href="/css/template-style.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="/js/script.js"></script>
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   	<link rel="stylesheet" href="/resources/demos/style.css">
-  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  	<script>
-	  	$( function() {
-	   		 $( "#dialog" ).dialog();
-	  	} );
-  	</script>
+  	
 </head>
 <body>
-	<div class="topo">
-		<div class="topointerior">
-			<div class="logo">
-				Game Station
-			</div>
-			<div class="menu">
-				<img src="img/list.png" class="menuMobile" onclick="toggleMenu()">
-				<ul id="menu">
-					<li><a href="/index">HOME</a></li>
-					<li><a href="/sobre">SOBRE</a></li>
-					<li><a href="/galeria">GALERIA</a></li>
-					<li><a href="/formulario">FORMULÁRIO</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<div th:replace="fragments/menu :: menu"></div>
+	
+	
 	<div class="banner">
 		<div class="bannerinterior">
 			<div class="banneresquerda">
@@ -69,12 +52,15 @@
 			</p>
 		</div>
 	</div>
-	<footer>
-		<div id="rodape">
-			Contato: (11) 1111-1111<br>
-			data de criação: 06/05/2018<br>
-			produzido por: Maike Bezerra
-		</div>
-	</footer>
+	
+	<div th:replace="fragments/footer :: footer"></div>
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script>
+	  	$( function() {
+	   		 $( "#dialog" ).dialog();
+	  	} );
+  	</script>
 </body>
 </html>

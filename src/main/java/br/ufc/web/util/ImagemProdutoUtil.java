@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-public class FileUtil {
+public class ImagemProdutoUtil {
 	
 	public static void salvarImagemProduto(String nomeDoProduto, MultipartFile imagem) {
 		if (imagemIsValid(imagem)) {
