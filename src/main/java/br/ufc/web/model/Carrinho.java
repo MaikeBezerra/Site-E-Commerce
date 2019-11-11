@@ -19,9 +19,9 @@ public class Carrinho {
 	}
 	 
 	public static Carrinho getInstance() {
-		if (Objects.isNull(uniqueInstance))
+		if (Objects.isNull(uniqueInstance)) {
 			uniqueInstance = new Carrinho();
-	 
+		}
 		return uniqueInstance;
 	}
 	

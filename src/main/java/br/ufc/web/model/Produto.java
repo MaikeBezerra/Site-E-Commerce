@@ -20,6 +20,8 @@ public class Produto {
 	@ManyToMany(mappedBy = "produtos")
 	private List<Usuario> usuarios;
 	
+	public Produto(){}
+	
 	public String getNome() {
 		return nome;
 	}
