@@ -99,12 +99,12 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+				<rulesets>
+					<ruleset>/rulesets/java/braces.xml</ruleset>
+				</rulesets>
+				</configuration>
 			</plugin>
 		</plugins>
-		
-	
-		
 	</build>
-
-
 </project>
