@@ -91,7 +91,15 @@
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>				
+				<artifactId>maven-pmd-plugin</artifactId>
+				<executions>
+					<execution>
+					<goals>
+					<goal>check</goal>
+					</goals>
+					</execution>
+				</executions>
+				
 				<configuration>
 				<rulesets>
 					<ruleset>/rulesets/java/braces.xml</ruleset>
