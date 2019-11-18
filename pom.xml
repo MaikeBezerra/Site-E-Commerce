@@ -94,11 +94,12 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<executions>
 					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
+					<goals>
+						<goal>check</goal>
+					</goals>
 					</execution>
 				</executions>
+				
 				<configuration>
 				<rulesets>
 					<ruleset>/rulesets/java/braces.xml</ruleset>

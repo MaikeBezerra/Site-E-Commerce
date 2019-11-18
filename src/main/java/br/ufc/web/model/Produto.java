@@ -1,5 +1,6 @@
 package br.ufc.web.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Produto {
+public class Produto implements Serializable{
 	
+	private static final long serialVersionUID = 415507773517353522L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -20,7 +22,9 @@ public class Produto {
 	@ManyToMany(mappedBy = "produtos")
 	private List<Usuario> usuarios;
 	
-	public Produto(){}
+	public Produto(){
+		
+	}
 	
 	public String getNome() {
 		return nome;
