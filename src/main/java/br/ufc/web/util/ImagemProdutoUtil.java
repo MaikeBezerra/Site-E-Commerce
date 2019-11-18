@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ImagemProdutoUtil {
 	
+	private ImagemProdutoUtil() {}
+	
 	public static void salvarImagemProduto(String nomeDoProduto, MultipartFile imagem) {
 		if (imagemIsValid(imagem)) {
 			String caminho = "src/main/resources/static/img/produtos/" + nomeDoProduto + ".jpg";
@@ -21,11 +23,11 @@ public class ImagemProdutoUtil {
 	}
 	
 	public static void salvarImagem(String caminho, MultipartFile imagem) {
-		File file = new File(caminho);
 		
 		try {
+			File file = new File(caminho);
 			FileUtils.writeByteArrayToFile(file, imagem.getBytes());
-		} catch(IOException e) {
+		} catch(IOException | NullPointerException e) {
 			e.printStackTrace();
 		}
 	}

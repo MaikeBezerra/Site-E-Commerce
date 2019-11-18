@@ -1,5 +1,6 @@
 package br.ufc.web.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -20,9 +21,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Usuario implements UserDetails{
+public class Usuario implements UserDetails, Serializable {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3703312771914406606L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,8 +56,12 @@ public class Usuario implements UserDetails{
 	private String login;
 	private String senha;
 	
-	public Usuario() {}
 	
+	
+	public Usuario() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -131,7 +136,7 @@ public class Usuario implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return (Collection<? extends GrantedAuthority>) this.roles;
+		return this.roles;
 	}
 
 	@Override

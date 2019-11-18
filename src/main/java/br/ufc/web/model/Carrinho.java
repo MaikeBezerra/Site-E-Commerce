@@ -15,7 +15,7 @@ public class Carrinho {
 	private List<Produto> produtos; 
 	
 	private Carrinho() {
-		 produtos = new ArrayList<Produto>();
+		 produtos = new ArrayList<>();
 	}
 	 
 	public static Carrinho getInstance() {
